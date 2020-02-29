@@ -1,0 +1,9 @@
+Package: com.daveapps.quitall
+Name: QuitAll
+Depends: mobilesubstrate
+Version: 1
+Architecture: iphoneos-arm
+Description: One tweak to quit them all
+Maintainer: Dave van Wijk
+Author: Dave van Wijk
+Section: Tweaks

@@ -1,4 +1,5 @@
 include $(THEOS)/makefiles/common.mk
+ARCHS=arm64 arm64e
 
 BUNDLE_NAME = quitAllPrefs
 

@@ -1,5 +1,5 @@
-/Users/vanwijkdave/Documents/GitHub/QuitAll/Tweak/.theos/obj/armv7/zodiacs.m.9155bdf1.o: \
-  zodiacs.m /Users/vanwijkdave/theos/Prefix.pch \
+/Users/vanwijkdave/Documents/GitHub/QuitAll/Tweak/.theos/obj/arm64e/qapRootListController.m.f7e3d4b3.o: \
+  qapRootListController.m /Users/vanwijkdave/theos/Prefix.pch \
   /Users/vanwijkdave/theos/vendor/include/_Prefix/BackwardsCompat.h \
   /Users/vanwijkdave/theos/vendor/include/_Prefix/IOSMacros.h \
   /Users/vanwijkdave/theos/vendor/include/HBLog.h \
@@ -7,10 +7,13 @@
   qapRootListController.h \
   /Users/vanwijkdave/theos/vendor/include/Preferences/PSListController.h \
   /Users/vanwijkdave/theos/vendor/include/Preferences/PSViewController.h \
+  /Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/HBAppearanceSettings.h \
+  /Users/vanwijkdave/theos/vendor/lib/Cephei.framework/Headers/HBPreferences.h \
   /Users/vanwijkdave/theos/vendor/include/Preferences/PSSpecifier.h \
   /Users/vanwijkdave/theos/vendor/include/Preferences/PSTableCell.h \
-  /Users/vanwijkdave/theos/vendor/include/Preferences/PSSwitchTableCell.h \
-  /Users/vanwijkdave/theos/vendor/include/Preferences/PSControlTableCell.h
+  /Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/HBRootListController.h \
+  /Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/HBListController.h \
+  /Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/PSListController+HBTintAdditions.h
 
 /Users/vanwijkdave/theos/Prefix.pch:
 
@@ -28,10 +31,16 @@ qapRootListController.h:
 
 /Users/vanwijkdave/theos/vendor/include/Preferences/PSViewController.h:
 
+/Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/HBAppearanceSettings.h:
+
+/Users/vanwijkdave/theos/vendor/lib/Cephei.framework/Headers/HBPreferences.h:
+
 /Users/vanwijkdave/theos/vendor/include/Preferences/PSSpecifier.h:
 
 /Users/vanwijkdave/theos/vendor/include/Preferences/PSTableCell.h:
 
-/Users/vanwijkdave/theos/vendor/include/Preferences/PSSwitchTableCell.h:
+/Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/HBRootListController.h:
 
-/Users/vanwijkdave/theos/vendor/include/Preferences/PSControlTableCell.h:
+/Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/HBListController.h:
+
+/Users/vanwijkdave/theos/vendor/lib/CepheiPrefs.framework/Headers/PSListController+HBTintAdditions.h:

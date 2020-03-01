@@ -1,10 +1,10 @@
 Package: com.daveapps.quitall
 Name: QuitAll
-Depends: mobilesubstrate
+Depends: mobilesubstrate, ws.hbang.common (>= 1.11)
 Architecture: iphoneos-arm
 Description: One tweak to quit them all
 Maintainer: Dave van Wijk
 Author: Dave van Wijk
 Section: Tweaks
-Version: 1
-Installed-Size: 484
+Version: 1.0.1
+Installed-Size: 480

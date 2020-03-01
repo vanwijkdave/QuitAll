@@ -58,7 +58,7 @@
 
 
 - (void)SourceCode {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/vanwijkdave"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/vanwijkdave/QuitAll"]];
 }
 
 - (void)donateDave {

@@ -6,5 +6,5 @@ Description: One tweak to quit them all
 Maintainer: Dave van Wijk
 Author: Dave van Wijk
 Section: Tweaks
-Version: 1.0.1
-Installed-Size: 480
+Version: 1.0.1-5+debug
+Installed-Size: 432

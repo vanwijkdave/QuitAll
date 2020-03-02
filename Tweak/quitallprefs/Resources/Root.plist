@@ -74,6 +74,20 @@
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.daveapps.quitallprefs</string>
+			<key>key</key>
+			<string>kKeepNavAlive</string>
+			<key>label</key>
+			<string>Don't Quit Navigation</string>
+			<!-- <key>PostNotification</key>
+			<string>com.purefocustwo/notif</string> -->
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>More</string>
@@ -112,6 +126,7 @@
 			<key>label</key>
 			<string>Donate ❤️</string>
 		</dict>
+
 
 	</array>
 	<key>title</key>

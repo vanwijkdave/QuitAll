@@ -7,6 +7,7 @@ bool enabled = true;
 bool leftButtonPlacement = false;
 bool darkStyle = false;
 bool dontQuitNowPlaying = true;
+bool dontQuitNavigation = true;
 //variable shit
 bool addedButton = false;
 bool transparantButton = false;
@@ -25,7 +26,7 @@ UILabel *fromLabel;
 @end
 
 @interface SBMediaController : NSObject
-@property (nonatomic, weak,readonly) SBApplication * nowPlayingApplication; 
+@property (nonatomic, weak,readonly) SBApplication * nowPlayingApplication;
 +(id)sharedInstance;
 @end
 
@@ -95,7 +96,7 @@ UILabel *fromLabel;
 
 		//create a button for inside the view
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-		[button addTarget:self 
+		[button addTarget:self
 				action:@selector(buttonClicked:)
 		forControlEvents:UIControlEventTouchUpInside];
 		button.frame = buttonView.frame;
@@ -164,18 +165,28 @@ UILabel *fromLabel;
 	SBMainSwitcherViewController *mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
     NSArray *items = mainSwitcher.recentAppLayouts;
         for(SBAppLayout * item in items) {
-			SBDisplayItem *itemz = [item.rolesToLayoutItemsMap objectForKey:one];
-			NSString *bundleID = itemz.bundleIdentifier;
-			NSString *nowPlayingID = [[[%c(SBMediaController) sharedInstance] nowPlayingApplication] bundleIdentifier];
+					SBDisplayItem *itemz = [item.rolesToLayoutItemsMap objectForKey:one];
+					NSString *bundleID = itemz.bundleIdentifier;
+					NSString *nowPlayingID = [[[%c(SBMediaController) sharedInstance] nowPlayingApplication] bundleIdentifier];
 
-			if (dontQuitNowPlaying) {
-				if (![bundleID isEqualToString: nowPlayingID] ) {
-					[mainSwitcher _deleteAppLayout:item forReason: 1];
+					if (dontQuitNowPlaying && dontQuitNavigation) {
+						if (![bundleID isEqualToString: nowPlayingID] && ![bundleID isEqualToString:@"com.google.Maps"] && ![bundleID isEqualToString:@"com.apple.Maps"] && ![bundleID isEqualToString:@"com.waze.iphone"]) {
+							[mainSwitcher _deleteAppLayout:item forReason: 1];
 
-				}
-			} else {
-				[mainSwitcher _deleteAppLayout:item forReason: 1];
-			}
+						}
+					} else if (!dontQuitNowPlaying && dontQuitNavigation) {
+						if (![bundleID isEqualToString:@"com.google.Maps"] || ![bundleID isEqualToString:@"com.apple.Maps"] || ![bundleID isEqualToString:@"com.waze.iphone"]) {
+							[mainSwitcher _deleteAppLayout:item forReason: 1];
+
+						}
+					} else if (dontQuitNowPlaying && !dontQuitNavigation) {
+						if (![bundleID isEqualToString: nowPlayingID] ) {
+							[mainSwitcher _deleteAppLayout:item forReason: 1];
+
+						}
+					} else {
+						[mainSwitcher _deleteAppLayout:item forReason: 1];
+					}
         }
 
 	//hide the button
@@ -184,7 +195,7 @@ UILabel *fromLabel;
 				fromLabel.alpha = 0;
 
 			}];
-	transparantButton = true;	
+	transparantButton = true;
 
  }
 
@@ -192,7 +203,7 @@ UILabel *fromLabel;
 %end
 
 %hook SBMainSwitcherViewController
-//hide the button when going back to the springboard in a smooth way 
+//hide the button when going back to the springboard in a smooth way
 -(void)switcherContentController:(id)arg1 setContainerStatusBarHidden:(BOOL)arg2 animationDuration:(double)arg3 {
 	if (arg2 == false) {
 			[UIView animateWithDuration:0.3 animations:^ {
@@ -200,7 +211,7 @@ UILabel *fromLabel;
 				fromLabel.alpha = 0;
 
 			}];
-		transparantButton = true;	
+		transparantButton = true;
 
 	}
 	%orig;
@@ -217,6 +228,7 @@ void loadPrefs() {
 	darkStyle = [([file objectForKey:@"kDarkButton"] ?: @(NO)) boolValue];
 	leftButtonPlacement = [([file objectForKey:@"kLeftPlacement"] ?: @(NO)) boolValue];
 	dontQuitNowPlaying = [([file objectForKey:@"kKeepMusicAlive"] ?: @(YES)) boolValue];
+	dontQuitNavigation = [([file objectForKey:@"kKeepNavAlive"] ?: @(YES)) boolValue];
 
 	if (enabled) {
         %init(tweak);
@@ -230,4 +242,3 @@ void loadPrefs() {
     loadPrefs();
 	// loadFirstFont();
 }
-

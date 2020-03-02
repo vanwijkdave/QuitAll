@@ -165,15 +165,6 @@ UILabel *fromLabel;
 	SBMainSwitcherViewController *mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
     NSArray *items = mainSwitcher.recentAppLayouts;
         for(SBAppLayout * item in items) {
-
-		psty.io
-
-		    File Upload
-		    About
-
-		View Raw Source
-
-
 					SBDisplayItem *itemz = [item.rolesToLayoutItemsMap objectForKey:one];
 					NSString *bundleID = itemz.bundleIdentifier;
 					NSString *nowPlayingID = [[[%c(SBMediaController) sharedInstance] nowPlayingApplication] bundleIdentifier];

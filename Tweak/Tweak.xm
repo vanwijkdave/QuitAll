@@ -174,12 +174,12 @@ UILabel *fromLabel;
 							[mainSwitcher _deleteAppLayout:item forReason: 1];
 
 						}
-					} else if (dontQuitNowPlaying && !dontQuitNavigation) {
+					} else if (!dontQuitNowPlaying && dontQuitNavigation) {
 						if (![bundleID isEqualToString:@"com.google.Maps"] || ![bundleID isEqualToString:@"com.apple.Maps"] || ![bundleID isEqualToString:@"com.waze.iphone"]) {
 							[mainSwitcher _deleteAppLayout:item forReason: 1];
 
 						}
-					} else if (!dontQuitNowPlaying && dontQuitNavigation) {
+					} else if (dontQuitNowPlaying && !dontQuitNavigation) {
 						if (![bundleID isEqualToString: nowPlayingID] ) {
 							[mainSwitcher _deleteAppLayout:item forReason: 1];
 

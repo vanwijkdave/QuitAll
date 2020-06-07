@@ -53,7 +53,43 @@ UILabel *fromLabel;
 -(void)removeAppLayouts:(id)arg1 ;
 @end
 
+#pragma mark Grid Switcher Support Headers
+@interface PTSettings : NSObject
+@end
+
+@interface SBAppSwitcherSettings : PTSettings
+-(long long)effectiveSwitcherStyle;
+-(long long)switcherStyle;
+-(void)setSwitcherStyle:(long long)arg1 ;
+@end
+
+static BOOL isGrid;
+
 %group tweak
+
+#pragma mark Grid Switcher Support Hook
+%hook SBSwitcherAppSuggestionContentView
+-(long long)effectiveSwitcherStyle {
+	if (isGrid == YES)
+	return 0;
+	else
+	return %orig;
+}
+-(long long)switcherStyle {
+	if (%orig == 1) {
+		isGrid = YES;
+	} else {
+		isGrid = NO;
+	}
+	return %orig;
+}
+-(void)setSwitcherStyle:(long long)arg1 {
+	if (isGrid == YES) {
+		%orig(0);
+	} else {
+		%orig;
+	}
+}%end
 
 %hook SBSwitcherAppSuggestionContentView
 -(void)didMoveToWindow {

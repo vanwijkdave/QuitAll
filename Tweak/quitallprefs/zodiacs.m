@@ -1,18 +1,8 @@
 #include "qapRootListController.h"
-#include <spawn.h>
-
-#import <Preferences/PSSpecifier.h>
-#import <Preferences/PSListController.h>
-#import <Preferences/PSTableCell.h>
-#import <Preferences/PSSwitchTableCell.h>
-
 
 @protocol PreferencesTableCustomView
 - (id)initWithSpecifier:(id)arg1;
 @end
-
-
-
 
 //@@@@@@@@@@@@@@@@@@@@@@
 //@@@@ Banner Cell  @@@@

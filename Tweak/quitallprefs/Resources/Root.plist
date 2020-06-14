@@ -27,8 +27,8 @@
 			<string>kEnabled</string>
 			<key>label</key>
 			<string>Enabled</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
+			<key>PostNotification</key>
+			<string>com.daveapps.quitallprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -41,8 +41,8 @@
 			<string>kDarkButton</string>
 			<key>label</key>
 			<string>Dark Button</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
+			<key>PostNotification</key>
+			<string>com.daveapps.quitallprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -55,8 +55,8 @@
 			<string>kLeftPlacement</string>
 			<key>label</key>
 			<string>Place Button Top-Left</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
+			<key>PostNotification</key>
+			<string>com.daveapps.quitallprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -69,8 +69,8 @@
 			<string>kKeepMusicAlive</string>
 			<key>label</key>
 			<string>Don't Quit Now Playing App</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
+			<key>PostNotification</key>
+			<string>com.daveapps.quitallprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -83,8 +83,8 @@
 			<string>kKeepNavAlive</string>
 			<key>label</key>
 			<string>Don't Quit Navigation</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
+			<key>PostNotification</key>
+			<string>com.daveapps.quitallprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -126,8 +126,6 @@
 			<key>label</key>
 			<string>Donate ❤️</string>
 		</dict>
-
-
 	</array>
 	<key>title</key>
 	<string>QuitAll</string>

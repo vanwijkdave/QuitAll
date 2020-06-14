@@ -8,6 +8,7 @@ bool dontQuitNavigation = true;
 
 bool addedButton = false;
 bool transparentButton = false;
+bool notchlessInstalled = false;
 UIView *buttonView;
 UILabel *fromLabel;
 
@@ -40,7 +41,11 @@ UILabel *fromLabel;
 
         // View constraints
         buttonView.translatesAutoresizingMaskIntoConstraints = false;
-        [buttonView.topAnchor constraintEqualToAnchor:self.topAnchor constant:12].active = YES;
+        if(notchlessInstalled) {
+            [buttonView.topAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.topAnchor constant:35].active = YES;
+        } else {
+            [buttonView.topAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.topAnchor constant:12].active = YES;
+        }
         if (leftButtonPlacement) {
             [buttonView.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:15].active = YES;
         } else {
@@ -105,7 +110,6 @@ UILabel *fromLabel;
 
 
 %new
-
 - (void)buttonClicked:(UIButton*)sender {
     SBMainSwitcherViewController *mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
     NSArray *items = mainSwitcher.recentAppLayouts;
@@ -168,6 +172,8 @@ void loadPrefs() {
 
 %ctor {
     loadPrefs();
+
+    notchlessInstalled = [[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/zNotchless.dylib"];
     if (enabled) {
         %init;
     }

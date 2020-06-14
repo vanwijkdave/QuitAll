@@ -3,6 +3,10 @@
 @interface SBSwitcherAppSuggestionContentView: UIView
 @end
 
+@interface SBSwitcherAppSuggestionContentView (QuitAll)
+- (void)_quitAllReloadPrefs;
+@end
+
 @interface SBDisplayItem: NSObject
 @property (nonatomic,copy,readonly) NSString * bundleIdentifier;
 @end

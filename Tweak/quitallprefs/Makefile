@@ -1,5 +1,7 @@
-include $(THEOS)/makefiles/common.mk
+TARGET=iphone:clang:13.0:11.0
 ARCHS=arm64 arm64e
+
+include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = quitAllPrefs
 

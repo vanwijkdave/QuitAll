@@ -164,6 +164,10 @@ UILabel *fromLabel;
 -(void) buttonClicked:(UIButton*)sender {
 	id one = @1;
 
+	UIImpactFeedbackGenerator *gen = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+	[gen prepare];
+	[gen impactOccurred];
+
 	//remove the apps
 	SBMainSwitcherViewController *mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
     NSArray *items = mainSwitcher.recentAppLayouts;

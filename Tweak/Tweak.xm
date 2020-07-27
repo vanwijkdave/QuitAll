@@ -5,7 +5,7 @@
 //settings
 bool enabled = true;
 bool leftButtonPlacement = false;
-bool darkStyle = false;
+int darkStyle = 0;
 bool dontQuitNowPlaying = true;
 bool dontQuitNavigation = true;
 //variable shit
@@ -70,11 +70,14 @@ UILabel *fromLabel;
 
 		//create smooth smooth blur
 		UIBlurEffect *blurEffect;
-		if (darkStyle) {
-			blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-		} else {
+		if(darkStyle == 0){
+			blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];  // this changes depending on light/dark mode on iOS 13
+		} else if (darkStyle == 1) {
 			blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-		}
+		} else {
+			blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+		}	
+
 		UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
 		blurEffectView.frame = buttonView.bounds;
 		blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -225,7 +228,7 @@ UILabel *fromLabel;
 void loadPrefs() {
 	HBPreferences *file = [[HBPreferences alloc] initWithIdentifier:@"com.daveapps.quitallprefs"];
 	enabled = [([file objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
-	darkStyle = [([file objectForKey:@"kDarkButton"] ?: @(NO)) boolValue];
+	darkStyle = [([file objectForKey:@"kDarkButton"] ?: @(0)) intValue];
 	leftButtonPlacement = [([file objectForKey:@"kLeftPlacement"] ?: @(NO)) boolValue];
 	dontQuitNowPlaying = [([file objectForKey:@"kKeepMusicAlive"] ?: @(YES)) boolValue];
 	dontQuitNavigation = [([file objectForKey:@"kKeepNavAlive"] ?: @(YES)) boolValue];

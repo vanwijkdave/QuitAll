@@ -62,7 +62,7 @@
 }
 
 - (void)donateDave {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://paypal.me/vanwijkdave"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.redcross.org/donate/donation.html/"]];
 }
 
 @end

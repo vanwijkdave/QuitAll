@@ -9,6 +9,7 @@ quitAllPrefs_FRAMEWORKS = UIKit
 quitAllPrefs_PRIVATE_FRAMEWORKS = Preferences
 quitAllPrefs_CFLAGS = -fobjc-arc
 quitAllPrefs_EXTRA_FRAMEWORKS = CepheiPrefs
+quitAllPrefs_LIBRARIES = applist
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

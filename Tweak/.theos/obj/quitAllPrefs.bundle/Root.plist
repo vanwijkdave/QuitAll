@@ -31,19 +31,27 @@
 			<string>com.purefocustwo/notif</string> -->
 		</dict>
 		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.daveapps.quitallprefs</string>
-			<key>key</key>
-			<string>kDarkButton</string>
-			<key>label</key>
-			<string>Dark Button</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
-		</dict>
+            <key>cell</key>
+            <string>PSSegmentCell</string>
+            <key>defaults</key>
+            <string>com.daveapps.quitallprefs</string>
+            <key>default</key>
+            <string>0</string>
+            <key>key</key>
+            <string>kDarkButton</string>
+            <key>validValues</key>
+            <array>
+                <string>0</string>
+                <string>1</string>
+                <string>2</string>
+            </array>
+            <key>validTitles</key>
+            <array>
+            	<string>Automatic</string>
+                <string>Light</string>
+                <string>Dark</string>
+            </array>
+        </dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
@@ -55,22 +63,32 @@
 			<string>kLeftPlacement</string>
 			<key>label</key>
 			<string>Place Button Top-Left</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
+		</dict>
+			<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>com.daveapps.quitallprefs</string>
-			<key>key</key>
-			<string>kKeepMusicAlive</string>
+			<string>PSLinkCell</string>
+			<key>bundle</key>
+			<string>AppList</string>
+			<key>isController</key>
+			<string>1</string>
 			<key>label</key>
-			<string>Don't Quit Now Playing App</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
+			<string>Don't quit these apps:</string>
+			<key>ALAllowsSelection</key>
+			<string>1</string>
+			<key>ALSettingsKeyPrefix</key>
+			<string></string>
+			<key>ALSettingsDefaultValue</key>
+			<string>0</string>
+			<key>ALSettingsPath</key>
+			<string>/var/mobile/Library/Preferences/me.dave.quitall.plist</string>
+			<key>ALSingleEnabledMode</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -110,8 +128,9 @@
 			<key>action</key>
 			<string>donateDave</string>
 			<key>label</key>
-			<string>Donate ❤️</string>
+			<string>Donate to the Red Cross ❤️</string>
 		</dict>
+
 
 	</array>
 	<key>title</key>

@@ -1,57 +1,29 @@
-//import shit
+//Thanks for reading my code!
+//The code might be a mess but you'll just have to deal with that :PP
+//You're free to use any code from this tweak, just be sure to provide credit!
+//That being said, enjoy!
+//~Dave 
+
+
+
+
+//Import Headers
 #import <Cephei/HBPreferences.h>
+#import <AppList/AppList.h>
+#import "QuitAll.h"
 
 
-//settings
+//Settings
 bool enabled = true;
 bool leftButtonPlacement = false;
 int darkStyle = 0;
-bool dontQuitNowPlaying = true;
-bool dontQuitNavigation = true;
-//variable shit
+
+//Variables
 bool addedButton = false;
 bool transparantButton = false;
 UIView *buttonView;
 UILabel *fromLabel;
 
-@interface SBSwitcherAppSuggestionContentView: UIView
-@end
-
-@interface SBDisplayItem: NSObject
-@property (nonatomic,copy,readonly) NSString * bundleIdentifier;               //@synthesize bundleIdentifier=_bundleIdentifier - In the implementation block
-@end
-
-@interface SBApplication : NSObject
-@property (nonatomic,readonly) NSString * bundleIdentifier;                                                                                     //@synthesize bundleIdentifier=_bundleIdentifier - In the implementation block
-@end
-
-@interface SBMediaController : NSObject
-@property (nonatomic, weak,readonly) SBApplication * nowPlayingApplication;
-+(id)sharedInstance;
-@end
-
-
-
-//interfaces
-@interface SBMainSwitcherViewController: UIViewController
-+ (id)sharedInstance;
--(id)recentAppLayouts;
--(void)_rebuildAppListCache;
--(void)_destroyAppListCache;
--(void)_removeCardForDisplayIdentifier:(id)arg1 ;
--(void)_deleteAppLayout:(id)arg1 forReason:(long long)arg2;
-@end
-
-@interface SBAppLayout:NSObject
-@property (nonatomic,copy) NSDictionary * rolesToLayoutItemsMap;                                         //@synthesize rolesToLayoutItemsMap=_rolesToLayoutItemsMap - In the implementation block
-@end
-
-@interface SBRecentAppLayouts: NSObject
-+ (id)sharedInstance;
--(id)_recentsFromPrefs;
--(void)remove:(SBAppLayout* )arg1;
--(void)removeAppLayouts:(id)arg1 ;
-@end
 
 %group tweak
 
@@ -162,8 +134,6 @@ UILabel *fromLabel;
 %new
 
 -(void) buttonClicked:(UIButton*)sender {
-	id one = @1;
-
 	UIImpactFeedbackGenerator *gen = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
 	[gen prepare];
 	[gen impactOccurred];
@@ -172,29 +142,10 @@ UILabel *fromLabel;
 	SBMainSwitcherViewController *mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
     NSArray *items = mainSwitcher.recentAppLayouts;
         for(SBAppLayout * item in items) {
-					SBDisplayItem *itemz = [item.rolesToLayoutItemsMap objectForKey:one];
-					NSString *bundleID = itemz.bundleIdentifier;
-					NSString *nowPlayingID = [[[%c(SBMediaController) sharedInstance] nowPlayingApplication] bundleIdentifier];
-
-					if (dontQuitNowPlaying && dontQuitNavigation) {
-						if (![bundleID isEqualToString: nowPlayingID] && ![bundleID isEqualToString:@"com.google.Maps"] && ![bundleID isEqualToString:@"com.apple.Maps"] && ![bundleID isEqualToString:@"com.waze.iphone"]) {
-							[mainSwitcher _deleteAppLayout:item forReason: 1];
-
-						}
-					} else if (!dontQuitNowPlaying && dontQuitNavigation) {
-						if (![bundleID isEqualToString:@"com.google.Maps"] || ![bundleID isEqualToString:@"com.apple.Maps"] || ![bundleID isEqualToString:@"com.waze.iphone"]) {
-							[mainSwitcher _deleteAppLayout:item forReason: 1];
-
-						}
-					} else if (dontQuitNowPlaying && !dontQuitNavigation) {
-						if (![bundleID isEqualToString: nowPlayingID] ) {
-							[mainSwitcher _deleteAppLayout:item forReason: 1];
-
-						}
-					} else {
-						[mainSwitcher _deleteAppLayout:item forReason: 1];
-					}
+					[self clearApp:item switcher:mainSwitcher];
         }
+
+
 
 	//hide the button
 		[UIView animateWithDuration:0.3 animations:^ {
@@ -204,7 +155,60 @@ UILabel *fromLabel;
 			}];
 	transparantButton = true;
 
- }
+}
+
+%new
+-(void)clearApp:(SBAppLayout *)item switcher:(SBMainSwitcherViewController *)switcher {    
+	NSMutableDictionary *ALApps = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/me.dave.quitall.plist"];
+	NSMutableArray *ALArray = [[NSMutableArray alloc] init];
+
+	for(id key in ALApps) {
+	id value = [ALApps objectForKey:key];
+		if ([value boolValue] == true) {
+			[ALArray addObject: key];
+			
+		}
+	}
+
+	bool quitApp = true;
+	if (@available(iOS 14.0, *)) {
+			NSArray *arr = [item allItems];
+			SBDisplayItem *itemz = arr[0];
+
+			NSString *bundleID = itemz.bundleIdentifier;
+			NSString *nowPlayingID = [[[%c(SBMediaController) sharedInstance] nowPlayingApplication] bundleIdentifier];
+
+
+			if ([ALArray containsObject:bundleID] || [bundleID isEqualToString: nowPlayingID]) {
+				quitApp = false;
+				return;
+			} else {
+				quitApp = true;
+			}
+
+
+			if (quitApp) {
+				[switcher _deleteAppLayoutsMatchingBundleIdentifier:bundleID];
+			}
+
+    } else {
+		SBDisplayItem *itemz = [item.rolesToLayoutItemsMap objectForKey:@1];
+		NSString *bundleID = itemz.bundleIdentifier;
+			NSString *nowPlayingID = [[[%c(SBMediaController) sharedInstance] nowPlayingApplication] bundleIdentifier];
+
+
+		if ([ALArray containsObject:bundleID] || [bundleID isEqualToString: nowPlayingID]) {
+			quitApp = false;
+			return;
+		} else {
+			quitApp = true;
+		}
+
+		if (quitApp) {
+			[switcher _deleteAppLayout:item forReason: 1];
+		}
+	}
+}
 
 
 %end
@@ -234,9 +238,7 @@ void loadPrefs() {
 	enabled = [([file objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
 	darkStyle = [([file objectForKey:@"kDarkButton"] ?: @(0)) intValue];
 	leftButtonPlacement = [([file objectForKey:@"kLeftPlacement"] ?: @(NO)) boolValue];
-	dontQuitNowPlaying = [([file objectForKey:@"kKeepMusicAlive"] ?: @(YES)) boolValue];
-	dontQuitNavigation = [([file objectForKey:@"kKeepNavAlive"] ?: @(YES)) boolValue];
-
+	
 	if (enabled) {
         %init(tweak);
 	}
@@ -245,7 +247,5 @@ void loadPrefs() {
 
 
 %ctor {
-	//load prefs
     loadPrefs();
-	// loadFirstFont();
 }

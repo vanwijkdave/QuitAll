@@ -9,6 +9,7 @@ TWEAK_NAME = QuitAll
 QuitAll_FILES = Tweak.xm
 QuitAll_CFLAGS = -fobjc-arc
 QuitAll_EXTRA_FRAMEWORKS += Cephei
+QuitAll_LIBRARIES = applist 
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += quitallprefs

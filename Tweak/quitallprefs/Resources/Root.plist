@@ -27,8 +27,6 @@
 			<string>kEnabled</string>
 			<key>label</key>
 			<string>Enabled</string>
-			<!-- <key>PostNotification</key>
-			<string>com.purefocustwo/notif</string> -->
 		</dict>
 		<dict>
             <key>cell</key>
@@ -62,7 +60,19 @@
 			<key>key</key>
 			<string>kLeftPlacement</string>
 			<key>label</key>
-			<string>Place Button Top-Left</string>
+			<string>Place button at the left side</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.daveapps.quitallprefs</string>
+			<key>key</key>
+			<string>kBottom</string>
+			<key>label</key>
+			<string>Place button at the bottom</string>
 		</dict>
 			<dict>
 			<key>cell</key>
@@ -78,7 +88,7 @@
 			<key>isController</key>
 			<string>1</string>
 			<key>label</key>
-			<string>Don't quit these apps:</string>
+			<string>Exclude these apps from quiting</string>
 			<key>ALAllowsSelection</key>
 			<string>1</string>
 			<key>ALSettingsKeyPrefix</key>

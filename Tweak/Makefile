@@ -6,7 +6,7 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = QuitAll
 
 
-QuitAll_FILES = Tweak.xm
+QuitAll_FILES = Tweak.xm quitm.x
 QuitAll_CFLAGS = -fobjc-arc
 QuitAll_EXTRA_FRAMEWORKS += Cephei
 QuitAll_LIBRARIES = applist 

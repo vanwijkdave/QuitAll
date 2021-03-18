@@ -12,4 +12,5 @@ QuitAll adds a a button on top of your app/grid switcher, once pressed it clears
 5. Free & Open Source
 
 *You can download/view this on chariz repo: https://chariz.com/get/quitall*
+
 **For more info about my upcoming tweaks, you can follow my twitter: https://twitter.com/davewijk**

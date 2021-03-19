@@ -1,9 +1,5 @@
 #include "qapRootListController.h"
-#import <CepheiPrefs/HBAppearanceSettings.h>
-#import <Cephei/HBPreferences.h>
-#import <Preferences/PSSpecifier.h>
-#import <CepheiPrefs/HBRootListController.h>
-#include <spawn.h>
+
 
 @implementation qapRootListController
 
@@ -14,7 +10,14 @@
 
 	return _specifiers;
 }
+-(void)selectExcludeApps
+{
+    // Replace "com.spark.notchlessprefs" and "excludedApps" with your strings
+    SparkAppListTableViewController* s = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.daveapps.quitallprefs" andKey:@"excludedApps"];
 
+    [self.navigationController pushViewController:s animated:YES];
+    self.navigationItem.hidesBackButton = FALSE;
+}
 
 - (instancetype)init {
     self = [super init];

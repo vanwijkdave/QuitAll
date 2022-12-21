@@ -56,7 +56,7 @@
     versionLabel = [[UILabel alloc] initWithFrame:versionFrame];
     [versionLabel setFont:[UIFont systemFontOfSize:22 weight: UIFontWeightMedium] ];
     versionLabel.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.8];
-    versionLabel.text = @"3.0";
+    versionLabel.text = @"3.1";
     
     bgView.backgroundColor = [UIColor colorWithRed:0.46 green:0.72 blue:0.84 alpha:1.0];
     

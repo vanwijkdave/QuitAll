@@ -27,6 +27,8 @@
 			<string>kEnabled</string>
 			<key>label</key>
 			<string>Enabled</string>
+			<key>PostNotification</key>
+			<string>me.dave.quitall.reloadprefs</string>
 		</dict>
 		<dict>
             <key>cell</key>
@@ -49,6 +51,8 @@
                 <string>Light</string>
                 <string>Dark</string>
             </array>
+			<key>PostNotification</key>
+			<string>me.dave.quitall.reloadprefs</string>
         </dict>
 		<dict>
 			<key>cell</key>
@@ -61,6 +65,8 @@
 			<string>kLeftPlacement</string>
 			<key>label</key>
 			<string>Place button at the left side</string>
+			<key>PostNotification</key>
+			<string>me.dave.quitall.reloadprefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -73,6 +79,8 @@
 			<string>kBottom</string>
 			<key>label</key>
 			<string>Place button at the bottom</string>
+			<key>PostNotification</key>
+			<string>me.dave.quitall.reloadprefs</string>
 		</dict>
 			<dict>
 			<key>cell</key>
@@ -81,8 +89,10 @@
 			<string></string>
 		</dict>
 		<dict>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
 			<key>cell</key>
-			<string>HBLinkTableCell</string>
+			<string>PSButtonCell</string>
 			<key>label</key>
 			<string>Select apps to exclude</string>
 			<key>action</key>

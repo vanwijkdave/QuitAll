@@ -161,19 +161,26 @@ UILabel *fromLabel;
 %end
 
 
+HBPreferences *file;
+extern NSString *const HBPreferencesDidChangeNotification;
+
 void loadPrefs() {
-	HBPreferences *file = [[HBPreferences alloc] initWithIdentifier:@"com.daveapps.quitallprefs"];
+	file = [[HBPreferences alloc] initWithIdentifier:@"com.daveapps.quitallprefs"];
 	enabled = [([file objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
 	darkStyle = [([file objectForKey:@"kDarkButton"] ?: @(0)) intValue];
 	leftButtonPlacement = [([file objectForKey:@"kLeftPlacement"] ?: @(NO)) boolValue];
 	bottomPlacement = [([file objectForKey:@"kBottom"] ?: @(NO)) boolValue];
+}
 
-	if (enabled) {
-        %init(tweak);
-	}
+static void PreferencesChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    loadPrefs();
 }
 
 // Load the preferences before the other code is ran.
 %ctor {
     loadPrefs();
+	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) PreferencesChangedCallback, CFSTR("me.dave.quitall.reloadprefs"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+	if (enabled) {
+        %init(tweak);
+	}
 }

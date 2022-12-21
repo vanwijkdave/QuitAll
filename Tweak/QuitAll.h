@@ -1,14 +1,11 @@
-//Interfaces
-
 #import <UIKit/UIKit.h>
 
-
 @interface SBDisplayItem: NSObject
-@property (nonatomic,copy,readonly) NSString * bundleIdentifier;               //@synthesize bundleIdentifier=_bundleIdentifier - In the implementation block
+@property (nonatomic,copy,readonly) NSString * bundleIdentifier;
 @end
 
 @interface SBApplication : NSObject
-@property (nonatomic,readonly) NSString * bundleIdentifier;                                                                                     //@synthesize bundleIdentifier=_bundleIdentifier - In the implementation block
+@property (nonatomic,readonly) NSString * bundleIdentifier;
 @end
 
 @interface SBMediaController : NSObject
@@ -19,29 +16,17 @@
 @interface SBMainSwitcherViewController: UIViewController
 + (id)sharedInstance;
 -(id)recentAppLayouts;
--(void)_rebuildAppListCache;
--(void)_destroyAppListCache;
--(void)_removeCardForDisplayIdentifier:(id)arg1 ;
--(void)_deleteAppLayout:(id)arg1 forReason:(long long)arg2;
 -(void)_deleteAppLayoutsMatchingBundleIdentifier:(id)arg1 ;
 @end
 
 @interface SBAppLayout:NSObject
-@property (nonatomic,copy) NSDictionary * rolesToLayoutItemsMap;                                         //@synthesize rolesToLayoutItemsMap=_rolesToLayoutItemsMap - In the implementation block
+@property (nonatomic,copy) NSDictionary * rolesToLayoutItemsMap;
 -(id)allItems;
 @end
 
-@interface SBRecentAppLayouts: NSObject
-+ (id)sharedInstance;
--(id)_recentsFromPrefs;
--(void)remove:(SBAppLayout* )arg1;
--(void)removeAppLayouts:(id)arg1 ;
+@interface SBAppSwitcherScrollView : UIScrollView
 @end
-
-@interface SBAppSwitcherScrollView : UIScrollView 
-@end
-
 
 @interface QuitManager : NSObject
--(void)clearApp:(SBAppLayout *)item switcher:(SBMainSwitcherViewController *)switcher;
+-(void)clearApp:(SBAppLayout *)item switcher:(SBMainSwitcherViewController *)switcher excludeList:(NSMutableArray *)excluded;
 @end

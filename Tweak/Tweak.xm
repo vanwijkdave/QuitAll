@@ -6,7 +6,7 @@
 #import <Cephei/HBPreferences.h>
 #import <AppList/AppList.h>
 #import "QuitAll.h"
-
+#import "SparkAppList.h"
 
 // Settings
 bool enabled = true;
@@ -140,14 +140,7 @@ UILabel *fromLabel;
 
 	// Read the apps from the applist file, and add them to an array.
 	// These will be excluded from quitting.
-	NSMutableDictionary *ALApps = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/me.dave.quitall.plist"];
-	NSMutableArray *alArray = [[NSMutableArray alloc] init];
-	for (id key in ALApps) {
-		id value = [ALApps objectForKey:key];
-		if ([value boolValue] == true) {
-			[alArray addObject: key];
-		}
-	}
+	NSArray *alArray = [SparkAppList getAppListForIdentifier:@"me.dave.quitall" andKey:@"excludedApps"];
 
 	// Remove the apps from the switcher using QuitManager.
 	QuitManager *qm = [[QuitManager alloc] init];

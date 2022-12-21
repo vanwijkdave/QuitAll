@@ -9,7 +9,7 @@
 @implementation QuitManager
 
 // Clear an specific app from the switcher.
--(void)clearApp:(SBAppLayout *)item switcher:(SBMainSwitcherViewController *)switcher excludeList:(NSMutableArray *)excluded {
+-(void)clearApp:(SBAppLayout *)item switcher:(SBMainSwitcherViewController *)switcher excludeList:(NSArray *)excluded {
 	NSString *bundleID;
 	// Get the id of the app that need to be quit.
 	if (@available(iOS 14.0, *)) {

@@ -6,7 +6,7 @@ QuitAll adds a a button on top of your app/grid switcher, once pressed it clears
 
 **Full feature list:**
 1. Clear all apps from switcher
-2. Don't clear music related apps/apps of your choice
+2. Don't clear music related apps or any app of your choice
 3. Change the button appearance
 4. Align the button to the left or right, top or bottom
 5. Free & Open Source

@@ -82,23 +82,11 @@
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>bundle</key>
-			<string>AppList</string>
-			<key>isController</key>
-			<string>1</string>
+			<string>HBLinkTableCell</string>
 			<key>label</key>
-			<string>Exclude these apps from quiting</string>
-			<key>ALAllowsSelection</key>
-			<string>1</string>
-			<key>ALSettingsKeyPrefix</key>
-			<string></string>
-			<key>ALSettingsDefaultValue</key>
-			<string>0</string>
-			<key>ALSettingsPath</key>
-			<string>/var/mobile/Library/Preferences/me.dave.quitall.plist</string>
-			<key>ALSingleEnabledMode</key>
-			<false/>
+			<string>Select apps to exclude</string>
+			<key>action</key>
+			<string>selectExcludeApps</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -140,8 +128,6 @@
 			<key>label</key>
 			<string>Donate to the Red Cross ❤️</string>
 		</dict>
-
-
 	</array>
 	<key>title</key>
 	<string>QuitAll</string>

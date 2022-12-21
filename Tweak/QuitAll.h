@@ -28,5 +28,5 @@
 @end
 
 @interface QuitManager : NSObject
--(void)clearApp:(SBAppLayout *)item switcher:(SBMainSwitcherViewController *)switcher excludeList:(NSMutableArray *)excluded;
+-(void)clearApp:(SBAppLayout *)item switcher:(SBMainSwitcherViewController *)switcher excludeList:(NSArray *)excluded;
 @end

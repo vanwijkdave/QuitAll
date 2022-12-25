@@ -26,7 +26,11 @@
 
 	// Quit the apps if they are not present in one of the lists
 	if (bundleID != NULL && ![excluded containsObject:bundleID] && ![bundleID isEqualToString: nowPlayingID]) {
-		[switcher _deleteAppLayoutsMatchingBundleIdentifier:bundleID];
+		if (@available(iOS 14.0, *)) {
+			[switcher _deleteAppLayoutsMatchingBundleIdentifier:bundleID];
+		} else {
+			[switcher _deleteAppLayout:item forReason: 1];
+		}
 	}
 }
 @end

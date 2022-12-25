@@ -17,6 +17,7 @@
 + (id)sharedInstance;
 -(id)recentAppLayouts;
 -(void)_deleteAppLayoutsMatchingBundleIdentifier:(id)arg1 ;
+-(void)_deleteAppLayout:(id)arg1 forReason:(long long)arg2;
 @end
 
 @interface SBAppLayout:NSObject
